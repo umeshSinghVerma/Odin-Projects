@@ -42,6 +42,10 @@
         border-radius: 50%;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
+    .smallboxes{
+        -webkit-user-drag: none;
+        user-select: none;
+    }
 </style>
 
 <body id="bdy">
@@ -95,6 +99,7 @@
             x.setAttribute("onmouseover", "alpha(this)")
             x.setAttribute("onmousedown", "beta(this)")
             x.setAttribute("id", "box" + i);
+            x.setAttribute("class", "smallboxes");
             master.appendChild(x);
             // console.log(this);
         }
