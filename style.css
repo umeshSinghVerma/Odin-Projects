@@ -33,7 +33,7 @@ body{
 }
 .left img{
     /* height: 200px; */
-    width: 90%;
+    width: 60%;
     /* border: inset #a95636 5px; */
     box-shadow: 0 8px 8px -4px lightblue;
     -webkit-user-drag: none;
