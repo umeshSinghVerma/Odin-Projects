@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .new{
+            display: flex;
+            justify-content: center;
+        }
+        form{
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            font-size: 10px;
+        }
+        input{
+            width: 350px;
+            height: 30px;
+            outline: none;
+            margin: 5px;
+        }
+        .valid{
+            border: green  solid 3px;
+        }
+        .invalid{
+            border: solid grey 1px;
+            border-radius: 2px;
+        }
+        p{
+            display: none;
+            color: red;
+        }
+        h1{
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="new">
+        <form action="">
+            <h1>New User Sign Up</h1>
+            <input type="text" placeholder="username">
+            <p id="username">*must be a and contain 5-12 characters</p>
+            <input type="text" placeholder="email">
+            <p id="email">*Email must be a valid adderess e.g. me@mydomain.com</p>
+            <input type="password" placeholder="password">
+            <p id="password">*Password must alpha numeric (@,_ and - are also allowed)and be 8-20 characters</p>
+            <input type="text" placeholder="telephone">
+            <p id="telephone">*Telephone must be a valid Indian telephone number (10 Digits)</p>
+            <input type="text" placeholder="profile slug">
+            <p id="profile slug">*Slug must contain only lowercase letters, numbers and hypens and be 8-20 characters</p>
+        </form>
+    </div>
+</body>
+<script>
+    let validations={
+        username: /^[a-zA-z ]+$/,
+        password: /^[@,-\w\s]{8,20}$/,
+        telephone:/^(\+91)?[7-9]\d{9}$/,
+        "profile slug":/^[a-zA-Z -\d]{8,20}$/,
+        email:/^[a-zA-z0-9]+[@][a-z]+[.][a-z]{2,3}/
+        
+    }
+    let x = document.getElementsByTagName("input");
+    for(i=0;i<x.length;i++){
+        let k = x[i].placeholder;
+        r = validations[k]
+        x[i].setAttribute("oninput",`getit(this,${r})`);
+    }
+    function getit(id,regex){
+        if(regex.test(id.value)==true){
+            id.className="valid"
+            let p = document.getElementById(alpha);
+            p.style.display="none";
+        }else{
+            id.className="invalid"
+            alpha=id.placeholder;
+            let p = document.getElementById(alpha);
+            p.style.display="block";
+        }
+        if(id.value==""){
+            alpha=id.placeholder;
+            let p = document.getElementById(alpha);
+            p.style.display="none";
+        }
+    }
+</script>
+</html>
